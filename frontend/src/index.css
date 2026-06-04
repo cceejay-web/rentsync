@@ -1,0 +1,40 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg:             #F8F5F0;
+  --surface:        #FFFFFF;
+  --surface-alt:    #F4FAF7;
+  --primary:        #0F5D4E;
+  --primary-hover:  #0B4A3D;
+  --primary-active: #08382F;
+  --accent-soft:    #9AD3C2;
+  --accent-soft-bg: #C9E6DC;
+  --accent-bg:      #E8F4EF;
+  --accent-warm:    #B27620;
+  --text-primary:   #14161A;
+  --text-muted:     #5C6069;
+  --border:         #EFF0F2;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+}
+
+a {
+  color: #0F5D4E;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0B4A3D;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}

@@ -1,0 +1,30 @@
+services:
+  # 1. Your Node.js Web Server (Backend)
+  - type: web
+    name: rentsync-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rentsync-db
+          property: connectionString
+      # Add your M-Pesa/Daraja credentials here if they are in your .env
+      - key: DARAJA_CONSUMER_KEY
+        value: your_actual_key_here 
+
+  # 2. Your Frontend Website
+  - type: web
+    runtime: static
+    name: rentsync-frontend
+    rootDir: frontend
+    buildCommand: "" # If using React/Vite, change to "npm run build"
+    staticPublishPath: .   # If using React/Vite, change to "dist" or "build"
+
+databases:
+  # 3. Your SQL Database
+  - name: rentsync-db
+    plan: free
+  
