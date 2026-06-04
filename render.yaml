@@ -20,7 +20,7 @@ services:
     runtime: static
     name: rentsync-frontend
     rootDir: frontend
-    buildCommand: "" # If using React/Vite, change to "npm run build"
+    buildCommand: "npm install && npm run build" # If using React/Vite, change to "npm run build"
     staticPublishPath: dist   # If using React/Vite, change to "dist" or "build"
 
 databases:
