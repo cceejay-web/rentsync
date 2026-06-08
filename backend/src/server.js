@@ -1,3 +1,4 @@
+
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
@@ -17,11 +18,18 @@ import applicationsRouter  from './routes/applications.js';
 const app = express();
 const PORT = process.env.PORT ?? 5000;
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({
+    origin: ['http://localhost:5173', 'https://rentsync-frontend.onrender.com'], 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true // Important if you are using cookies/sessions
+}));
 app.use(express.json());
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
+});
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 app.use('/api/auth',       authRouter);
@@ -37,6 +45,5 @@ app.use('/api/tenant',     tenantRouter);
 app.use('/api/requests',      requestsRouter);
 app.use('/api/applications',  applicationsRouter);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
+
