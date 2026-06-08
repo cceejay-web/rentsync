@@ -19,7 +19,7 @@ const app = express();
 const PORT = process.env.PORT ?? 5000;
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://rentsync-frontend.onrender.com'], 
+    origin: ['http://localhost:5173', process.env.FRONTEND_URL], // Allow both local and live frontend URLs
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true // Important if you are using cookies/sessions
 }));
